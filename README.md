@@ -1,6 +1,6 @@
 # Zimran IT School case study
 
-This repository contains a complete response to the Zimran IT School test assignment: a reverse-engineered view of Spotify's growth model and a formula-driven evaluation of two traffic partners from both sides of the commercial relationship.
+This case study examines how Spotify acquires, converts, and retains listeners, then evaluates whether two traffic partners make financial sense for zimran.test and for the partners themselves. The presentation explains the business model; the workbook contains the calculations and campaign decisions.
 
 ## Start here
 
@@ -157,7 +157,7 @@ outputs/analysis/              CSV and JSON analytical results
 
 ## Setup
 
-Python 3.11+ is recommended.
+Python 3.11 or later is required. The analysis and tests have been verified in a fresh Python 3.14 environment.
 
 ```powershell
 python -m venv .venv

@@ -54,7 +54,7 @@ function addNotes(slide, urls, note = "") {
   slide.speakerNotes.textFrame.setText(`${note}${note ? "\n\n" : ""}[Sources]\n${urls.map((url) => `- ${url}`).join("\n")}`);
 }
 
-// 1. Cover - based on the Codex Grid cover-image-field silhouette.
+// 1. Cover.
 {
   const slide = deck.slides.add();
   slide.background.fill = WHITE;
