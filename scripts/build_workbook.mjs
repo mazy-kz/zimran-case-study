@@ -4,7 +4,7 @@ import { FileBlob, SpreadsheetFile } from "@oai/artifact-tool";
 
 const root = process.cwd();
 const inputPath = path.join(root, "data", "raw", "zimran_source.xlsx");
-const outputDir = path.join(root, "outputs", "zimran-case-study");
+const outputDir = path.join(root, "deliverables");
 const outputPath = path.join(outputDir, "Zimran_Partner_Economics.xlsx");
 const previewDir = path.join(root, "tmp", "workbook-final-previews");
 

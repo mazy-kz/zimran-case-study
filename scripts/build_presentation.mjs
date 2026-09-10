@@ -3,7 +3,7 @@ import path from "node:path";
 import { Presentation, PresentationFile } from "@oai/artifact-tool";
 
 const root = process.cwd();
-const outputDir = path.join(root, "outputs", "zimran-case-study");
+const outputDir = path.join(root, "deliverables");
 const previewDir = path.join(root, "tmp", "deck-final-previews");
 const outputPath = path.join(outputDir, "Spotify_Growth_Engine_Analysis.pptx");
 
@@ -174,7 +174,7 @@ function addNotes(slide, urls, note = "") {
 {
   const slide = deck.slides.add();
   slide.background.fill = WHITE;
-  addTitle(slide, "Three levers remove risk, friction and price mismatch", 6);
+  addTitle(slide, "Three levers reduce conversion barriers", 6);
   const levers = [
     ["1", "Trial", "$0 for three months lets an eligible user experience Premium before paying $12.99/month.", "Moves: trial start → paid conversion"],
     ["2", "Friction removal", "Ad-free listening, offline downloads, full playback control and lossless audio make the benefit immediate.", "Moves: free → Premium intent"],
@@ -254,6 +254,31 @@ function addNotes(slide, urls, note = "") {
   addShape(slide, "close-strip", { left: 42, top: 595, width: 1158, height: 58 }, GREEN, "roundRect");
   addText(slide, "close-strip-text", "The durable lesson is not 'be Spotify.' It is to make acquisition, product value and retention reinforce the same economic loop.", { left: 65, top: 608, width: 1110, height: 34 }, { fontSize: 20, bold: true, color: BLACK, alignment: "center" });
   addNotes(slide, ["https://www.spotify.com/us/premium/", "https://www.sec.gov/Archives/edgar/data/1639920/000114036126031044/ef20078867_ex99-1.htm", "https://engineering.atspotify.com/2015/11/what-made-discover-weekly-one-of-our-most-successful-feature-launches-to-date"], "Recommendations synthesize the preceding evidence.");
+}
+
+// 10. Linked sources.
+{
+  const slide = deck.slides.add();
+  slide.background.fill = WHITE;
+  addTitle(slide, "Sources", 10);
+  const sources = [
+    ["Spotify Q2 2026 shareholder update", "https://newsroom.spotify.com/2026-08-04/spotify-q2-2026-earnings/"],
+    ["Spotify 2025 Form 20-F", "https://www.sec.gov/Archives/edgar/data/1639920/000162828026006874/ck0001639920-20251231.htm"],
+    ["Spotify Premium U.S. plans", "https://www.spotify.com/us/premium/"],
+    ["IFPI Global Music Report 2026", "https://www.ifpi.org/global-music-report-2026-global-recorded-music-revenues-grow-6-4-as-record-companies-drive-innovation/"],
+    ["Spotify Engineering: Discover Weekly", "https://engineering.atspotify.com/2015/11/what-made-discover-weekly-one-of-our-most-successful-feature-launches-to-date"],
+    ["Spotify Engineering: algotorial playlists", "https://engineering.atspotify.com/2023/04/humans-machines-a-look-behind-spotifys-algotorial-playlists"],
+  ];
+  sources.forEach(([label, url], i) => {
+    const col = i < 3 ? 0 : 1;
+    const row = i % 3;
+    const left = 42 + col * 615;
+    const top = 155 + row * 158;
+    addText(slide, `source-label-${i}`, label, { left, top, width: 570, height: 34 }, { fontSize: 23, bold: true });
+    addText(slide, `source-url-${i}`, url, { left, top: top + 48, width: 570, height: 76 }, { fontSize: 15, color: GREEN_DARK });
+  });
+  addText(slide, "source-note", "Figures and interpretations are current through Q2 2026. Calculation notes and full citations also appear in the slide speaker notes and repository README.", { left: 42, top: 620, width: 1110, height: 38 }, { fontSize: 17, italic: true, color: TEXT2 });
+  addNotes(slide, sources.map(([, url]) => url), "External sources used in the analysis.");
 }
 
 await fs.mkdir(outputDir, { recursive: true });
