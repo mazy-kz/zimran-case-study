@@ -1,0 +1,4 @@
+campaign,client_current_rate,client_break_even_rate,client_rate_headroom,partner_current_media_rate,partner_break_even_media_rate,partner_rate_headroom
+1_desktop,9.00000000,7.99880675,-0.11124369,6.40000000,7.09387905,0.10841860
+1_mobile,3.50000000,7.60542587,1.17297882,2.34000000,1.84569983,-0.21123939
+2_cpc,0.33000000,0.33798195,0.02418773,0.23000000,0.33000000,0.43478261

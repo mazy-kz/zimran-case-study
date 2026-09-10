@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+.venv/
+node_modules/
+*.py[cod]
+*.inspect.ndjson
+.DS_Store
+Thumbs.db
+tmp/
+~$*.xlsx
+~$*.pptx

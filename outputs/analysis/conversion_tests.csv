@@ -1,0 +1,4 @@
+campaign_a,campaign_b,difference_pp,p_value,significant_at_5pct
+1_desktop,1_mobile,1.8981312,0.0045295727,True
+1_desktop,2_cpc,-4.8871462,3.4974949e-12,True
+1_mobile,2_cpc,-6.7852774,1.9878178e-25,True
