@@ -2,6 +2,37 @@
 
 This repository contains a complete response to the Zimran IT School test assignment: a reverse-engineered view of Spotify's growth model and a formula-driven evaluation of two traffic partners from both sides of the commercial relationship.
 
+## Start here
+
+| Final deliverable | Best for | Open |
+|---|---|---|
+| Spotify growth analysis | Primary presentation submission | [View or download PDF](deliverables/Spotify_Growth_Engine_Analysis.pdf) |
+| Editable Spotify deck | Reviewing slide structure and source notes | [Download PPTX](deliverables/Spotify_Growth_Engine_Analysis.pptx) |
+| Partner economics model | Reviewing formulas, assumptions, and decisions | [Download XLSX](deliverables/Zimran_Partner_Economics.xlsx) |
+
+The [requirement-by-requirement audit](docs/DELIVERABLE_AUDIT.md) maps every prompt in the assignment to a slide or workbook range.
+
+### The case in 60 seconds
+
+- Spotify's free tier works as a low-friction acquisition and learning system. Subscription revenue captures most of the value, while content rights constrain margin.
+- Partner 1 desktop loses money for zimran.test, while Partner 1 mobile creates strong client economics but loses money for the partner.
+- Partner 2 remains profitable from both viewpoints, but zimran.test has only $0.008 of CPC headroom, so it should remain a monitored test rather than scale immediately.
+
+[![Spotify presentation preview](docs/images/spotify-deck-preview.png)](deliverables/Spotify_Growth_Engine_Analysis.pdf)
+
+[![Partner economics decision memo](docs/images/partner-economics-preview.png)](deliverables/Zimran_Partner_Economics.xlsx)
+
+## Contents
+
+- [Executive summary](#executive-summary)
+- [Key findings](#key-findings)
+- [Methodology](#methodology)
+- [Data dictionary](#data-dictionary)
+- [Repository structure](#repository-structure)
+- [Setup and reproducibility](#setup)
+- [Sources](#sources)
+- [Limitations and next steps](#limitations-and-next-steps)
+
 ## Executive summary
 
 The two tasks point to the same operating principle: a high top-of-funnel conversion rate is useful only when it compounds into attractive downstream economics.
@@ -14,10 +45,8 @@ The partner analysis reaches a deliberately asymmetric conclusion:
 - **Partner 1 mobile:** highly profitable for zimran.test at **+117.3%**, but unprofitable for the partner at **-21.1%**. Keep the traffic, while recognizing the partner must reduce its media CPM from $2.34 to about $1.85, improve CTR, or renegotiate payout.
 - **Partner 2 CPC:** profitable on both sides, but with very different cushions: **+2.4% for zimran.test** versus **+43.5% for the partner**. Continue only as a monitored test because the client's break-even CPC is approximately $0.338 against a current $0.33 payout.
 
-## Deliverables
+## Supporting analytical outputs
 
-- [`Spotify_Growth_Engine_Analysis.pptx`](outputs/zimran-case-study/Spotify_Growth_Engine_Analysis.pptx) - nine-slide presentation covering the business model, YoY metrics and benchmark, margin structure, acquisition, conversion, retention, strategic constraints, and transferable lessons.
-- [`Zimran_Partner_Economics.xlsx`](outputs/zimran-case-study/Zimran_Partner_Economics.xlsx) - completed source workbook with auditable formulas, both ROI viewpoints, assumptions, a decision memo, optimization actions, and data-quality caveats.
 - [`campaign_summary.csv`](outputs/analysis/campaign_summary.csv), [`conversion_tests.csv`](outputs/analysis/conversion_tests.csv), [`break_even_scenarios.csv`](outputs/analysis/break_even_scenarios.csv), and [`data_audit.json`](outputs/analysis/data_audit.json) - machine-readable analytical outputs.
 
 ## Key findings
@@ -116,12 +145,14 @@ The assignment uses ROI greater than zero as the keep/drop rule. In practice, Pa
 
 ```text
 data/raw/                      Original brief and source workbook
+deliverables/                  Final PDF, editable deck, and Excel model
+docs/                          Requirement audit and README preview images
 src/analysis.py                Cleaning, audit, statistics, ROI, and scenarios
 scripts/build_workbook.mjs     Rebuilds the formula-driven Excel deliverable
 scripts/build_presentation.mjs Rebuilds the PowerPoint deliverable
+scripts/export_presentation_pdf.ps1  Exports the PPTX to PDF with PowerPoint
 tests/test_analysis.py         Data-integrity and reconciliation checks
 outputs/analysis/              CSV and JSON analytical results
-outputs/zimran-case-study/     Final presentation and workbook
 ```
 
 ## Setup
@@ -152,7 +183,10 @@ To rebuild the Office artifacts inside a Codex workspace with the bundled runtim
 ```powershell
 node scripts\build_workbook.mjs
 node scripts\build_presentation.mjs
+powershell -ExecutionPolicy Bypass -File scripts\export_presentation_pdf.ps1
 ```
+
+The PDF export step requires Microsoft PowerPoint on Windows. The checked-in PDF remains available for environments without PowerPoint.
 
 ## Sources
 
@@ -163,6 +197,10 @@ node scripts\build_presentation.mjs
 - [IFPI Global Music Report 2026 release](https://www.ifpi.org/global-music-report-2026-global-recorded-music-revenues-grow-6-4-as-record-companies-drive-innovation/)
 - [Spotify Engineering: Discover Weekly](https://engineering.atspotify.com/2015/11/what-made-discover-weekly-one-of-our-most-successful-feature-launches-to-date)
 - [Spotify Engineering: algotorial playlists](https://engineering.atspotify.com/2023/04/humans-machines-a-look-behind-spotifys-algotorial-playlists)
+
+## Attribution and data use
+
+The assignment brief and source workbook belong to their respective authors and are included only to make this educational case study auditable. This repository does not claim ownership of Spotify trademarks, Zimran materials, or third-party data, and it does not grant a separate license for those source materials.
 
 ## Limitations and next steps
 
